@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keycloak SSO Test</title>
+</head>
+<body>
+    <h1>🌟 ยินดีต้อนรับสู่หน้า Test SSO 🌟</h1>
+    <p>นี่คือหน้าเว็บสำหรับทดสอบรับข้อมูลจาก Keycloak โดยเฉพาะ</p>
+    <hr>
+    <h3>📨 ข้อมูลที่ได้รับจาก Keycloak (Parameters):</h3>
+    <div id="params" style="background-color:#f0f0f0; padding:15px; border-radius:5px;">
+        <p><i>กำลังรอข้อมูล...</i></p>
+    </div>
+
+    <script>
+        // โค้ดนี้จะดึง parameters จาก URL มาแสดงผล
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramsDiv = document.getElementById('params');
+
+        if ([...urlParams].length > 0) {
+            let html = '<ul>';
+            for (let [key, value] of urlParams) {
+                html += `<li><strong>${key}:</strong> ${value}</li>`;
+            }
+            html += '</ul>';
+            paramsDiv.innerHTML = html;
+        } else {
+            paramsDiv.innerHTML = '<p><i>ไม่มี parameters ใน URL (เป็นการโหลดหน้าปกติ)</i></p>';
+        }
+    </script>
+</body>
+</html>
